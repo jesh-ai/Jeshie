@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="web.css">
+    <style> @import url(https://fonts.googleapis.com/css2?family=NTR&display=swap); </style>
+    <style> @import url(https://fonts.gstatic.com); </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style data-jss data-meta="MuiSvgIcon">
+        .MuiSvgIcon-root {
+            fill: currentColor;
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            font-size: 1.5rem;
+            transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            flex-shrink: 0;
+            user-select: none;
+            }
+            .MuiSvgIcon-colorPrimary {
+            color: #3f51b5;
+            }
+            .MuiSvgIcon-colorSecondary {
+            color: #f50057;
+            }
+            .MuiSvgIcon-colorAction {
+            color: rgba(0, 0, 0, 0.54);
+            }
+            .MuiSvgIcon-colorError {
+            color: #f44336;
+            }
+            .MuiSvgIcon-colorDisabled {
+            color: rgba(0, 0, 0, 0.26);
+            }
+            .MuiSvgIcon-fontSizeInherit {
+            font-size: inherit;
+            }
+            .MuiSvgIcon-fontSizeSmall {
+            font-size: 1.25rem;
+            }
+            .MuiSvgIcon-fontSizeLarge {
+            font-size: 2.1875rem;
+            }
+    </style>
+    <style data-jss data-meta="PrivateTabIndicator">
+            .PrivateTabIndicator-colorSecondary-5 {
+                background-color: var(--green-bright) !important;
+            }
+            .jss3 {
+            width: 100%;
+            bottom: 0;
+            height: 2px;
+            position: absolute;
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            }
+            .jss4 {
+            background-color: #3f51b5;
+            }
+            .jss5 {
+            background-color: #f50057;
+            }
+            .jss6 {
+            right: 0;
+            width: 2px;
+            height: 100%;
+            }
+    </style>
+    <style data-jss data-meta="MuiTouchRipple">
+        .MuiTouchRipple-root {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            overflow: hidden;
+            position: absolute;
+            border-radius: inherit;
+            pointer-events: none;
+            }
+            .MuiTouchRipple-ripple {
+            opacity: 0;
+            position: absolute;
+            }
+            .MuiTouchRipple-rippleVisible {
+            opacity: 0.3;
+            animation: MuiTouchRipple-keyframes-enter 550ms cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(1);
+            }
+            .MuiTouchRipple-ripplePulsate {
+            animation-duration: 200ms;
+            }
+            .MuiTouchRipple-child {
+            width: 100%;
+            height: 100%;
+            display: block;
+            opacity: 1;
+            border-radius: 50%;
+            background-color: currentColor;
+            }
+            .MuiTouchRipple-childLeaving {
+            opacity: 0;
+            animation: MuiTouchRipple-keyframes-exit 550ms cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .MuiTouchRipple-childPulsate {
+            top: 0;
+            left: 0;
+            position: absolute;
+            animation: MuiTouchRipple-keyframes-pulsate 2500ms cubic-bezier(0.4, 0, 0.2, 1) 200ms infinite;
+            }
+                @keyframes MuiTouchRipple-keyframes-enter {
+                0% {
+                    opacity: 0.1;
+                    transform: scale(0);
+                }
+                100% {
+                    opacity: 0.3;
+                    transform: scale(1);
+                }
+                }
+                @keyframes MuiTouchRipple-keyframes-exit {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+                }
+                @keyframes MuiTouchRipple-keyframes-pulsate {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(0.92);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+    </style>
+    <style data-jss data-meta="MuiButtonBase">
+        .MuiButtonBase-root {
+            color: inherit;
+            border: 0;
+            cursor: pointer;
+            margin: 0;
+            display: inline-flex;
+            outline: 0;
+            padding: 0;
+            position: relative;
+            align-items: center;
+            user-select: none;
+            border-radius: 0;
+            vertical-align: middle;
+            justify-content: center;
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-tap-highlight-color: transparent;
+            }
+            .MuiButtonBase-root::-moz-focus-inner {
+            border-style: none;
+            }
+            .MuiButtonBase-root.Mui-disabled {
+            cursor: default;
+            pointer-events: none;
+            }
+            @media print {
+            .MuiButtonBase-root {
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+    <style data-jss data-meta="MuiTabs">
+        .MuiTabs-root {
+            display: flex;
+            overflow: hidden;
+            min-height: 58px;
+            -webkit-overflow-scrolling: touch;
+            }
+            .MuiTabs-vertical {
+            flex-direction: column;
+            }
+            .MuiTabs-flexContainer {
+            display: flex;
+            }
+            .MuiTabs-flexContainerVertical {
+            flex-direction: column;
+            }
+            .MuiTabs-centered {
+            justify-content: center;
+            }
+            .MuiTabs-scroller {
+            flex: 1 1 auto;
+            display: inline-block;
+            position: relative;
+            white-space: nowrap;
+            }
+            .MuiTabs-fixed {
+            width: 100%;
+            overflow-x: hidden;
+            }
+            .MuiTabs-scrollable {
+            overflow-x: scroll;
+            scrollbar-width: none;
+            }
+
+            .MuiTabs-scrollable::-webkit-scrollbar {
+            display: none;
+            }
+            .MuiTab-wrapper {
+            align-items: flex-start!important;
+            font-family: NTR,sans-serif;
+            font-size: 20px;
+            text-align: left;
+            }
+            @media (max-width:599.95px) {
+            .MuiTabs-scrollButtonsDesktop {
+                display: none;
+            }
+            }
+    </style>
+    <style data-jss data-meta="MuiTypography">
+        .MuiTypography-root {
+            margin: 0;
+            }
+            .MuiTypography-body2 {
+            font-size: 0.875rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.43;
+            letter-spacing: 0.01071em;
+            }
+            .MuiTypography-body1 {
+            font-size: 1rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.00938em;
+            }
+            .MuiTypography-caption {
+            font-size: 0.75rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.66;
+            letter-spacing: 0.03333em;
+            }
+            .MuiTypography-button {
+            font-size: 0.875rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 500;
+            line-height: 1.75;
+            letter-spacing: 0.02857em;
+            text-transform: uppercase;
+            }
+            .MuiTypography-h1 {
+            font-size: 6rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 300;
+            line-height: 1.167;
+            letter-spacing: -0.01562em;
+            }
+            .MuiTypography-h2 {
+            font-size: 3.75rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: -0.00833em;
+            }
+            .MuiTypography-h3 {
+            font-size: 3rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.167;
+            letter-spacing: 0em;
+            }
+            .MuiTypography-h4 {
+            font-size: 2.125rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.235;
+            letter-spacing: 0.00735em;
+            }
+            .MuiTypography-h5 {
+            font-size: 1.5rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.334;
+            letter-spacing: 0em;
+            }
+            .MuiTypography-h6 {
+            font-size: 1.25rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 500;
+            line-height: 1.6;
+            letter-spacing: 0.0075em;
+            }
+            .MuiTypography-subtitle1 {
+            font-size: 1rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.75;
+            letter-spacing: 0.00938em;
+            }
+            .MuiTypography-subtitle2 {
+            font-size: 0.875rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 500;
+            line-height: 1.57;
+            letter-spacing: 0.00714em;
+            }
+            .MuiTypography-overline {
+            font-size: 0.75rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 2.66;
+            letter-spacing: 0.08333em;
+            text-transform: uppercase;
+            }
+            .MuiTypography-srOnly {
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            }
+            .MuiTypography-alignLeft {
+            text-align: left;
+            }
+            .MuiTypography-alignCenter {
+            text-align: center;
+            }
+            .MuiTypography-alignRight {
+            text-align: right;
+            }
+            .MuiTypography-alignJustify {
+            text-align: justify;
+            }
+            .MuiTypography-noWrap {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            }
+            .MuiTypography-gutterBottom {
+            margin-bottom: 0.35em;
+            }
+            .MuiTypography-paragraph {
+            margin-bottom: 16px;
+            }
+            .MuiTypography-colorInherit {
+            color: inherit;
+            }
+            .MuiTypography-colorPrimary {
+            color: #3f51b5;
+            }
+            .MuiTypography-colorSecondary {
+            color: #f50057;
+            }
+            .MuiTypography-colorTextPrimary {
+            color: rgba(0, 0, 0, 0.87);
+            }
+            .MuiTypography-colorTextSecondary {
+            color: rgba(0, 0, 0, 0.54);
+            }
+            .MuiTypography-colorError {
+            color: #f44336;
+            }
+            .MuiTypography-displayInline {
+            display: inline;
+            }
+            .MuiTypography-displayBlock {
+            display: block;
+        }
+    </style>
+    <style data-jss data-meta="MuiBox"> 
+        .MuiBox-root {
+            width: -180vw;
+        }
+    </style>
+    <style data-jss data-meta="makeStyles">
+
+        .makeStyles-tabs-2 {
+            border-right: 1px solid var(--lightest-navy) !important;
+        }
+        .jss1 {
+            height: 275px;
+            display: flex;
+            flex-grow: 1;
+            background-color: #1a1a1a;
+            }
+        .jss2 {
+            border-right: 1px solid rgba(0, 0, 0, 0.12);
+        }
+    </style>
+    <title>Jeshie</title>
+</head>
+    <body>
+        <div id="root">
+            <div class="App"> 
+                <nav class="bg-body-tertiary navbar navbar-expand navbar-light fixed-top">
+                    <div class="container">
+                        <a href="#" class="navbar-brand">Jeshaiah</a>
+                        <button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler collapsed">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse" id="basic-navbar-nav">
+                            <div class="me-auto navbar-nav">
+                                <a href="#intro" data-rb-event-key="#intro" class="nav-link">Home</a>
+                                <a href="#about" data-rb-event-key="#about" class="nav-link">About</a>
+                                <a href="#experience" data-rb-event-key="#experience" class="nav-link">Experience</a>
+                                <a href="#portfolio" data-rb-event-key="#portfolio" class="nav-link">Portfolio</a>
+                            </div>
+                            <div class="ml-auto navbar-nav">
+                                <a href="mailto:jmamulleno@gmail.com" data-rb-event-key="mailto:jmamulleno@gmail.com" class="nav-link">
+                                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="font-size: 20px;">
+                                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-.4 4.25l-7.07 4.42c-.32.2-.74.2-1.06 0L4.4 8.25c-.25-.16-.4-.43-.4-.72 0-.67.73-1.07 1.3-.72L12 11l6.7-4.19c.57-.35 1.3.05 1.3.72 0 .29-.15.56-.4.72z"></path>
+                                    </svg>
+                                </a>
+                                <a target="_blank" href="https://github.com/jesha-ai" data-rb-event-key="https://github.com/jesha-ai" class="nav-link">
+                                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="font-size: 19px;">
+                                        <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"></path>
+                                    </svg>
+                                </a>
+                                <a target="_blank" href="https://www.linkedin.com/in/jeshaiah-mae-mulleno-6762b1248/" class="nav-link">
+                                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="font-size: 21px;">
+                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <div id="content">
+                    <div id="intro">
+                        <div id="toro">
+                            <div class="react-p5-wrapper">
+                                <img src="totoro-jumping.gif" class="p5Canvas" width="400" height="400" style="width: 400px; height: 400px;">
+                            </div>
+                        </div>
+
+                    <div class="Typist">
+                            <span class="intro-title">
+                                hi,                          
+                                <span class="intro-name">jeshie</span>
+                                here.
+                            </span>
+                    </div>
+
+                        <div class="fade-in-section is-visible">
+                            <div class="intro-subtitle">I design and code with passion.</div>
+                            <div class="intro-desc">
+                                I am a passionate computer science student, honing graphic design skills, aiming to become a software engineer and create impactful digital experiences.
+                            </div>
+                            <a href="mailto:jmamulleno@gmail.com" class="intro-contact">
+                                <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-.4 4.25l-7.07 4.42c-.32.2-.74.2-1.06 0L4.4 8.25c-.25-.16-.4-.43-.4-.72 0-.67.73-1.07 1.3-.72L12 11l6.7-4.19c.57-.35 1.3.05 1.3.72 0 .29-.15.56-.4.72z"></path>
+                                </svg>
+                                Say hi!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="about">
+                    <div class="fade-in-section is-visible">
+                        <div class="section-header ">
+                        <span class="section-title">/ about me</span>
+                        </div>
+                        <div class="about-content">
+                            <div class="about-description">
+                                <p> 
+                                I am currently a 
+                                <b>software engineer fellow</b>
+                                at 
+                                <a href="https://www.linkedin.com/company/headstarterai">Headstarter AI</a> and also a
+                                <b>student</b>
+                                at
+                                <a href="https://www.plm.edu.ph/about"> Pamantasan ng Lungsod ng Maynila</a>, working on my Bachelor's degree in Computer Science.
+                                </p>
+                                Here are some technologies I have been working with:
+                                <ul class="tech-stack">
+                                    <div class="fade-in-section is-visible" style="transition-delay: 100ms;">
+                                        <li>
+                                            Python
+                                        </li>
+                                    </div>
+                                    <div class="fade-in-section is-visible" style="transition-delay: 200ms;">
+                                        <li>
+                                            HTML
+                                        </li>
+                                    </div>
+                                    <div class="fade-in-section is-visible" style="transition-delay: 300ms;">
+                                        <li>
+                                            CSS
+                                        </li>
+                                    </div>
+                                    <div class="fade-in-section is-visible" style="transition-delay: 400ms;">
+                                        <li>
+                                            JavaScript
+                                        </li>
+                                    </div>
+                                    <div class="fade-in-section is-visible" style="transition-delay: 500ms;">
+                                        <li>
+                                            Java
+                                        </li>
+                                    </div>
+                                    <div class="fade-in-section is-visible" style="transition-delay: 600ms;">
+                                        <li>
+                                            C++
+                                        </li>
+                                    </div>
+                                </ul>
+                                <p>
+                                    Outside of this field, I'm interested in reading books such as non-fiction and following the developments of science. I also play a lot of mobile games.
+                                </p>
+                            </div>
+                            <div class="about-image">
+                                <img alt="Jeshaiah Mulleno" src="Website Pic.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="experience">
+                    <div class="fade-in-section is-visible">
+                        <div class="section-header"> 
+                            <span class="section-title">/ experience</span>
+                        </div>
+                        <div class="jss1">
+                            <div class="MuiTabs-root jss2">
+                                <div class="MuiTabs-scrollable" style="width: 99px; height: 99px; position: absolute; top: -9999px; overflow: scroll;"></div>
+                                <div class="MuiTabs-scroller MuiTabs-scrollable" style="margin-bottom: 0px;">
+                                    <div class="MuiTabs-flexContainer MuiTabs-flexContainerVertical" role="tablist">
+                                        <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit Mui-selected" tabindex="0" type="button" role="tab" aria-selected="true" id="full-width-tab-0" aria-controls="full-width-tab-panel-0">
+                                            <span class="MuiTab-wrapper" >Freelance</span>
+                                            <span class="MuiTouchRipple-root"></span>
+                                        </button>
+                                        <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab" aria-selected="false" id="full-width-tab-1" aria-controls="full-width-tab-panel-1">
+                                            <span class="MuiTab-wrapper">Instagram</span>
+                                            <span class="MuiTouchRipple-root"></span>
+                                        </button>
+                                        <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab" aria-selected="false" id="full-width-tab-2" aria-controls="full-width-tab-panel-2">
+                                            <span class="MuiTab-wrapper">Wattpad</span>
+                                            <span class="MuiTouchRipple-root"></span>
+                                        </button>
+                                    </div>
+                                    <span class="jss3 jss5 MuiTabs-indicator jss6" style="top: 0px; height: 48px;"></span>
+                                </div>
+                            </div>
+                            <div role="tab-panel" id="full-width-tab-panel-0" aria-labelledby="full-width-tab-0">
+                                <div class="MuiBox-root jss7">
+                                    <p class="MuiTypography-root MuiTypography-body1">
+                                        <span class="job-list-job-title">Content Writer</span>
+                                        <span class="job-list-job-company"></span>
+                                        <div class="job-list-duration">SEP 2022 - PRESENT</div>
+                                        <ul class="job-description">
+                                            <div class="fade-in-section is-visible" style="transition-delay: 100ms;"> 
+                                                <li>
+                                                    Create engaging, high-quality written content for various platforms and purposes, such as websites, blogs, social media, and marketing materials.
+                                                </li>
+                                            </div>
+                                            <div class="fade-in-section is-visible" style="transition-delay: 200ms;"> 
+                                                <li>
+                                                    Conduct thorough research on industry-related topics, generate innovative ideas, and adapt writing style to meet the needs of different audiences.
+                                                </li>
+                                            </div>
+                                            <div class="fade-in-section is-visible" style="transition-delay: 300ms;"> 
+                                                <li>
+                                                    Stay updated on industry trends, SEO best practices, and content marketing strategies to optimize content performance and reach.
+                                                </li>
+                                            </div>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                            <div role="tab-panel" hidden id="full-width-tab-panel-1" aria-labelledby="full-width-tab-1">
+                                <div class="MuiBox-root jss8">
+                                    <p class="MuiTypography-root MuiTypography-body1">
+                                        <span class="job-list-job-title">Poet @ </span>
+                                        <span class="job-list-job-company">Instagram</span>
+                                        <div class="job-list-duration">MAR 2021 - PRESENT</div>
+                                        <ul class="job-description">
+                                            <div class="fade-in-section is-visible" style="transition-delay: 100ms;"> 
+                                                <li>
+                                                    Crafted compelling and engaging poetic content tailored for Instagram's platform, adhering to character limits, visual aesthetics, and audience preferences.
+                                                </li>
+                                            </div>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                            <div role="tab-panel" hidden id="full-width-tab-panel-2" aria-labelledby="full-width-tab-2">
+                                <div class="MuiBox-root jss9">
+                                    <p class="MuiTypography-root MuiTypography-body1">
+                                        <span class="job-list-job-title">Novel Writer @ </span>
+                                        <span class="job-list-job-company">Wattpad</span>
+                                        <div class="job-list-duration">JUNE 2017 - DEC 2019</div>
+                                        <ul class="job-description">
+                                            <div class="fade-in-section is-visible" style="transition-delay: 100ms;"> 
+                                                <li>
+                                                    Generated original story concepts, brainstormed plot lines, and developed compelling characters to create captivating narratives that enthralled Wattpad's community of readers.
+                                                </li>
+                                            </div>
+                                            <div class="fade-in-section is-visible" style="transition-delay: 200ms;">
+                                                <li>
+                                                    Authored serialized novels, releasing chapters periodically to keep readers eagerly anticipating the next installment. Maintained consistency in writing style, pacing, and character development throughout the story arcs.
+                                                </li>
+                                            </div>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="portfolio">
+                    <div class="section-header ">
+                        <span class="section-title">/ portfolio</span>
+                    </div>
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                            <li data-target="#demo" data-slide-to="3"></li>
+                            <li data-target="#demo" data-slide-to="4"></li>
+                            <li data-target="#demo" data-slide-to="5"></li>
+                        </ul>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a href="https://www.instagram.com/p/CaAQvN8BRXJ/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                    <img class="d-block w-100" src="Copy of Copy of Add a little bit of body text.png" alt="river flows" href="https://www.instagram.com/p/CaAQvN8BRXJ/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                </a>
+                            </div>
+                                <div class="caption-bg">
+                                    <div class="carousel-caption">
+                                        <span class="external-links">
+                                            <a class="instagram-icon" href="https://www.instagram.com/p/CaAQvN8BRXJ/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" focusable="false" aria-hidden="true" style="font-size: 20px; color: var(--lightest-slate);">
+                                                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                                                </svg>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            <div class="carousel-item">
+                                <a href="https://www.instagram.com/p/C1l-pD3ymWc/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw=="> 
+                                    <img class="d-block w-100" src="Copy of Copy of Copy of Add a little bit of body text.png" alt="wishing snow" href="https://www.instagram.com/p/C1l-pD3ymWc/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                </a>
+                            </div>
+                            <div class="caption-bg">
+                                <div class="carousel-caption">
+                                    <span class="external-links">
+                                        <a class="instagram-icon" href="https://www.instagram.com/p/C1l-pD3ymWc/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" focusable="false" aria-hidden="true" style="font-size: 20px; color: var(--lightest-slate);">
+                                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                                            </svg>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="https://www.instagram.com/p/CWQ2ji5hzOS/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                    <img class="d-block w-100" src="Screenshot_20240102_145507.jpg" alt="writer of the spring night" href="https://www.instagram.com/p/CWQ2ji5hzOS/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                </a>
+                            </div>
+                            <div class="caption-bg">
+                                <div class="carousel-caption">
+                                    <span class="external-links">
+                                        <a class="instagram-icon" href="https://www.instagram.com/p/CWQ2ji5hzOS/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" focusable="false" aria-hidden="true" style="font-size: 20px; color: var(--lightest-slate);">
+                                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                                            </svg>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="https://www.instagram.com/p/CWkAM7mBv9K/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw=="> 
+                                    <img class="d-block w-100" src="Screenshot_20240102_145453.jpg" alt="writer of the summer night" href="https://www.instagram.com/p/CWkAM7mBv9K/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                </a>
+                            </div>
+                            <div class="caption-bg">
+                                <div class="carousel-caption">
+                                    <span class="external-links">
+                                        <a class="instagram-icon" href="https://www.instagram.com/p/CWkAM7mBv9K/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" focusable="false" aria-hidden="true" style="font-size: 20px; color: var(--lightest-slate);">
+                                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                                            </svg>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="https://www.instagram.com/p/CYP71CpBxee/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                    <img class="d-block w-100" src="Screenshot_20240102_145549.jpg" alt="writer of the autumn night" href="https://www.instagram.com/p/CYP71CpBxee/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                </a>
+                            </div>
+                            <div class="caption-bg">
+                                <div class="carousel-caption">
+                                    <span class="external-links">
+                                        <a class="instagram-icon" href="https://www.instagram.com/p/CYP71CpBxee/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" focusable="false" aria-hidden="true" style="font-size: 20px; color: var(--lightest-slate);">
+                                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                                            </svg>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <a href="https://www.instagram.com/p/CaAK9Qxhn_z/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                    <img class="d-block w-100" src="Screenshot_20240102_145619.jpg" alt="writer of the winter night" href="https://www.instagram.com/p/CaAK9Qxhn_z/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                </a>
+                            </div>
+                            <div class="caption-bg">
+                                <div class="carousel-caption">
+                                    <span class="external-links">
+                                        <a class="instagram-icon" href="https://www.instagram.com/p/CaAK9Qxhn_z/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" focusable="false" aria-hidden="true" style="font-size: 20px; color: var(--lightest-slate);">
+                                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                                            </svg>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        <a class="carousel-control-prev" href="#demo" data-rb-event-key="#demo" data-slide="prev" role="button">
+                            <span aria-hidden="true"class="carousel-control-prev-icon"></span>
+
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next" role="button">
+                            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-container">
+                        <ul class="portfolio-grid">
+                            <div class="fade-in-section is-visible" style="transition-delay: 100ms;">
+                                <a href="https://www.instagram.com/p/CV2rHC_JrB5/?utm_source=ig_web_copy_link&igsh=N2ViNmM2MDRjNw==">
+                                    <li class="portfolio-card">
+                                        <div class="card-header">
+                                            <div class="folder-icon">
+                                                <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="font-size: 35px;">
+                                                    <path d="M20 6h-8l-1.41-1.41C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 12H5c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v8c0 .55-.45 1-1 1z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="card-title">Haiku</div>
+                                        <div class="card-desc">
+                                            "Within the lyrical tapestry spun by pen name Salvestrail, the poem episode unfolds as a vibrant mosaic, unveiling the vivid essence of her life. Each verse, delicately woven, portrays her journey through joys, sorrows, and the resolute spirit that defines her existence."
+                                        </div>
+                                    </li>
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fade-in-section is-visible">
+                    <div id="credits">
+                        <div class="ending-credits">
+                            <div>Built and designed by Jeshaiah Mulleno.</div>
+                            <div>All rights reserved. ©</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script> 
+        import { withStyles } from "@material-ui/core/styles";
+        import Tab from '@mui/material/Tab';
+        import TabPanel from '@mui/lab/TabPanel';
+        import TabList from '@mui/lab/TabList';
+        import Box from '@mui/material/Box';
+        import Typography from '@mui/material/Typography';
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.MuiTab-root');
+
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    const tabId = this.getAttribute('id');
+                    const panelId = tabId.replace('full-width-tab', 'full-width-tab-panel');
+
+                    // Hide all tab panels
+                    const allPanels = document.querySelectorAll('[role="tab-panel"]');
+                    allPanels.forEach(function (panel) {
+                        panel.setAttribute('hidden', 'true');
+                        panel.setAttribute('aria-hidden', 'true');
+                    });
+
+                    // Show the clicked tab's panel
+                    const targetPanel = document.getElementById(panelId);
+                    if (targetPanel) {
+                        targetPanel.removeAttribute('hidden');
+                        targetPanel.setAttribute('aria-hidden', 'false');
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.MuiTab-root');
+            const indicator = document.querySelector('.MuiTabs-indicator');
+
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    const tabRect = tab.getBoundingClientRect();
+                    const parentRect = tab.parentElement.getBoundingClientRect();
+
+                    const offset = tabRect.top - parentRect.top;
+                    const height = tabRect.height;
+
+                    indicator.style.height = height + 'px';
+                    indicator.style.transform = `translateY(${offset}px)`;
+                });
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/react@17/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mui/material/umd/material.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mui/lab/umd/lab.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</html>
